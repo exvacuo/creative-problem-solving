@@ -1,62 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SafeCalc — Trigger Activated</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>SafeCalc — Trigger</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/framework7@9.0.3/framework7-bundle.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/framework7-icons@5.0.5/css/framework7-icons.css">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body class="page-bg-dark">
 
   <div class="phone-frame">
-    <div class="trigger-screen">
+    <div class="dynamic-island"></div>
 
-      <!-- Status Bar -->
-      <div class="status-bar">
-        <span class="time">9:41</span>
-        <span style="font-size:12px; font-weight:500; letter-spacing:0.5px; opacity:0.7;">SafeCalc</span>
-        <div class="icons">
-          <svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 00-6 0zm-4-4l2 2a7.074 7.074 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+    <div id="app">
+      <div class="view view-main">
+        <div data-name="trigger" class="page no-navbar">
+          <div class="page-content" style="background:var(--calc-bg); padding:0; display:flex; flex-direction:column; min-height:852px;">
+
+            <div class="trigger-overlay">
+              <!-- Lock icon -->
+              <div class="lock-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+
+              <div class="trigger-code">π π π =</div>
+
+              <div class="trigger-message">
+                <h2>Advanced Mode Activated</h2>
+                <p>Verifying secure connection…</p>
+              </div>
+
+              <div class="loading-dots">
+                <span></span><span></span><span></span>
+              </div>
+
+              <div class="trigger-progress">
+                <div class="trigger-progress-bar"></div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
-
-      <!-- Trigger Overlay -->
-      <div class="trigger-overlay">
-
-        <!-- Lock icon -->
-        <div class="lock-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-          </svg>
-        </div>
-
-        <!-- Trigger code -->
-        <div class="trigger-code">π π π =</div>
-
-        <!-- Message -->
-        <div class="trigger-message">
-          <h2>Advanced Mode Activated</h2>
-          <p>Verifying secure connection…</p>
-        </div>
-
-        <!-- Loading animation -->
-        <div class="loading-dots">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <!-- Progress bar -->
-        <div class="trigger-progress">
-          <div class="trigger-progress-bar"></div>
-        </div>
-
-      </div>
-
     </div>
+
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/framework7@9.0.3/framework7-bundle.min.js"></script>
+  <script>
+    var app = new Framework7({ el: '#app', name: 'SafeCalc', theme: 'ios' });
+  </script>
 </body>
 </html>

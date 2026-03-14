@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>SafeCalc — Home Screen</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/framework7@9.0.3/framework7-bundle.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="page-bg-dark">
+
+  <div class="phone-frame">
+    <div class="dynamic-island"></div>
+    <div class="homescreen">
+
+      <!-- Status Bar -->
+      <div class="hs-status-bar">
+        <span>9:41</span>
+        <div class="icons">
+          <svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 00-6 0zm-4-4l2 2a7.074 7.074 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+        </div>
+      </div>
+
+      <!-- Search pill -->
+      <div class="hs-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span>Search</span>
+      </div>
+
+      <!-- App Grid -->
+      <div class="hs-grid">
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" src="../assets/ios-icons/facetime.png" alt="FaceTime">
+          </div>
+          <span class="hs-app-name">FaceTime</span>
+        </div>
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" src="../assets/ios-icons/weather.png" alt="Weather">
+            <span class="hs-badge">3</span>
+          </div>
+          <span class="hs-app-name">Weather</span>
+        </div>
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" src="../assets/ios-icons/clock.png" alt="Clock">
+          </div>
+          <span class="hs-app-name">Clock</span>
+        </div>
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" src="../assets/ios-icons/photos.png" alt="Photos">
+          </div>
+          <span class="hs-app-name">Photos</span>
+        </div>
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" src="../assets/ios-icons/reminders.png" alt="Reminders">
+          </div>
+          <span class="hs-app-name">Reminders</span>
+        </div>
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" src="../assets/ios-icons/appstore.png" alt="App Store">
+          </div>
+          <span class="hs-app-name">App Store</span>
+        </div>
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" src="../assets/ios-icons/maps.png" alt="Maps">
+          </div>
+          <span class="hs-app-name">Maps</span>
+        </div>
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" src="../assets/ios-icons/safari.png" alt="Safari">
+          </div>
+          <span class="hs-app-name">Safari</span>
+        </div>
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" src="../assets/ios-icons/notes.png" alt="Notes">
+          </div>
+          <span class="hs-app-name">Notes</span>
+        </div>
+        <!-- SafeCalc — blends in -->
+        <a class="hs-app" href="calculator.html">
+          <div class="hs-icon-wrapper">
+            <div class="hs-app-icon calc"><svg viewBox="0 0 24 24" fill="none" stroke="#ff9f0a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><rect x="6" y="4" width="12" height="5" rx="1" fill="rgba(255,159,10,0.15)" stroke="none"/><line x1="8" y1="12" x2="8" y2="12.01" stroke-width="2.5"/><line x1="12" y1="12" x2="12" y2="12.01" stroke-width="2.5"/><line x1="16" y1="12" x2="16" y2="12.01" stroke-width="2.5"/><line x1="8" y1="15.5" x2="8" y2="15.51" stroke-width="2.5"/><line x1="12" y1="15.5" x2="12" y2="15.51" stroke-width="2.5"/><line x1="16" y1="15.5" x2="16" y2="15.51" stroke-width="2.5"/><line x1="8" y1="19" x2="8" y2="19.01" stroke-width="2.5"/><line x1="12" y1="19" x2="16" y2="19" stroke-width="2.5"/></svg></div>
+          </div>
+          <span class="hs-app-name">SafeCalc</span>
+        </a>
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <div class="hs-app-icon" style="background:#8e8e93"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+          </div>
+          <span class="hs-app-name">Settings</span>
+        </div>
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" src="../assets/ios-icons/music.png" alt="Music">
+          </div>
+          <span class="hs-app-name">Music</span>
+        </div>
+      </div>
+
+      <!-- Page dots -->
+      <div class="hs-dots"><span class="active"></span><span></span><span></span></div>
+
+      <!-- Dock -->
+      <div class="hs-dock">
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" src="../assets/ios-icons/facetime.png">
+          </div>
+        </div>
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" src="../assets/ios-icons/safari.png">
+          </div>
+        </div>
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" src="../assets/ios-icons/messages.png">
+            <span class="hs-badge" style="top:-3px; right:-3px; border-color: rgba(255,255,255,0.2);">12</span>
+          </div>
+        </div>
+        <div class="hs-app">
+          <div class="hs-icon-wrapper">
+            <img class="hs-app-icon" style="background:#007aff" src="../assets/ios-icons/settings.png" onerror="this.outerHTML='<div class=\'hs-app-icon\' style=\'background:linear-gradient(180deg, #1aa1ff, #007aff)\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#fff\' stroke-width=\'2\'><path d=\'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\'/><polyline points=\'22,6 12,13 2,6\'/></svg></div>'">
+            <!-- Note: I am using the hand-coded CSS mail icon as fallback for the dock just in case since Mail extraction failed, but using the wrapper standard -->
+          </div>
+        </div>
+      </div>
+
+      <div class="home-indicator"></div>
+    </div>
+  </div>
+
+</body>
+</html>
