@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
-  <title>SafeCalc — Support</title>
+  <title>Calculator — Support</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/framework7@9.0.3/framework7-bundle.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/framework7-icons@5.0.5/css/framework7-icons.css">
   <link rel="stylesheet" href="../css/styles.css">
@@ -12,6 +12,24 @@
 
   <div class="phone-frame">
     <div class="dynamic-island"></div>
+
+    <!-- Global Status Bar -->
+    <div class="global-status-bar">
+      <span>9:41</span>
+      <div class="icons">
+        <!-- Cellular -->
+        <svg viewBox="0 0 18 12" style="width:16px; margin-right:1px;"><g fill="currentColor"><rect x="1" y="7" width="2.5" height="5" rx="1"/><rect x="5.5" y="4.5" width="2.5" height="7.5" rx="1"/><rect x="10" y="2" width="2.5" height="10" rx="1"/><rect x="14.5" y="0" width="2.5" height="12" rx="1"/></g></svg>
+        <!-- Wi-Fi -->
+        <svg viewBox="0 0 24 20" style="width:17px; margin-right:4px;"><path fill="currentColor" d="M12 19c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7.66-8.24c-4.23-3.6-11.09-3.6-15.32 0-.38.33-.42.91-.1 1.29.33.38.91.42 1.29.1 3.49-2.96 9.17-2.96 12.66 0 .38.33.95.28 1.29-.1.33-.38.28-.95-.1-1.29zm-3.83 4.09c-2.11-1.8-5.55-1.8-7.66 0-.38.33-.42.9-.1 1.29.33.38.91.42 1.29.1 1.74-1.48 4.59-1.48 6.33 0 .38.33.95.28 1.29-.1.32-.39.28-.96-.1-1.29zm7.66-8.19c-6.34-5.4-16.63-5.4-22.98 0-.38.33-.42.91-.1 1.29.33.38.91.42 1.29.1 5.23-4.45 13.75-4.45 18.98 0 .38.33.95.28 1.29-.1.33-.38.28-.95-.1-1.29z"/></svg>
+        <!-- Battery -->
+        <svg viewBox="0 0 25 12" style="width:23px; padding-bottom:1px;"><rect x="1" y="1" width="20" height="10" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="3" y="3" width="13" height="6" rx="1.5" fill="currentColor"/><path d="M22 4.5h1a1.5 1.5 0 010 3h-1v-3z" fill="currentColor"/></svg>
+      </div>
+    </div>
+
+    <!-- Persistent Emergency Exit FAB -->
+    <a href="calculator.html" class="emergency-fab" style="bottom: 40px;">
+      <i class="f7-icons">power</i> Exit
+    </a>
 
     <div id="app">
       <div class="view view-main">
@@ -27,85 +45,59 @@
 
           <div class="page-content" style="background:var(--safe-bg);">
 
-            <!-- Subtitle -->
-            <div class="block" style="margin-top:16px;">
-              <p style="color:var(--safe-text-dim); font-size:14px; margin:0;">You're safe here. All connections are encrypted.</p>
+            <div class="block-title block-title-large" style="color:var(--safe-text); margin-top:20px;">SafeSpace</div>
+            <div class="block block-strong inset" style="background: rgba(255,255,255,0.05); border-radius:16px; margin-top:8px; margin-bottom: 24px;">
+              <p style="color:var(--safe-text-dim); margin:0; line-height: 1.5;">You're safe here. All connections are encrypted and leave no trace on your device.</p>
             </div>
 
-            <!-- F7 iOS List — Media style -->
-            <div class="list media-list inset" style="margin-top:8px;">
-              <ul>
-                <li>
-                  <a href="#" class="item-link item-content">
-                    <div class="item-media">
-                      <div class="icon-circle chat-bg">
-                        <i class="f7-icons icon-chat">bubble_left_fill</i>
-                      </div>
-                    </div>
-                    <div class="item-inner">
-                      <div class="item-title-row">
-                        <div class="item-title" style="color:var(--safe-text);">Chat Support</div>
-                      </div>
-                      <div class="item-subtitle" style="color:var(--safe-text-dim);">Talk anonymously with a trained volunteer</div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="item-link item-content">
-                    <div class="item-media">
-                      <div class="icon-circle locate-bg">
-                        <i class="f7-icons icon-locate">location_fill</i>
-                      </div>
-                    </div>
-                    <div class="item-inner">
-                      <div class="item-title-row">
-                        <div class="item-title" style="color:var(--safe-text);">Find Local Help</div>
-                      </div>
-                      <div class="item-subtitle" style="color:var(--safe-text-dim);">Locate shelters, legal aid &amp; hotlines nearby</div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="item-link item-content">
-                    <div class="item-media">
-                      <div class="icon-circle plan-bg">
-                        <i class="f7-icons icon-plan">shield_fill</i>
-                      </div>
-                    </div>
-                    <div class="item-inner">
-                      <div class="item-title-row">
-                        <div class="item-title" style="color:var(--safe-text);">Safety Plan</div>
-                      </div>
-                      <div class="item-subtitle" style="color:var(--safe-text-dim);">Create a personalised safety strategy</div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="item-link item-content">
-                    <div class="item-media">
-                      <div class="icon-circle emergency-bg">
-                        <i class="f7-icons icon-emergency">phone_fill</i>
-                      </div>
-                    </div>
-                    <div class="item-inner">
-                      <div class="item-title-row">
-                        <div class="item-title" style="color:var(--safe-text);">Emergency Contacts</div>
-                      </div>
-                      <div class="item-subtitle" style="color:var(--safe-text-dim);">Quick-dial crisis helplines &amp; trusted contacts</div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
+            <!-- Dashboard Cards -->
+            <div class="card" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6); border-radius: 20px; box-shadow: 0 10px 20px rgba(59,130,246,0.3);">
+              <div class="card-content">
+                <a href="resource-finder.html" class="item-link" style="display:block; padding:24px; color:#fff; text-decoration:none;">
+                  <i class="f7-icons" style="font-size:36px; margin-bottom:12px;">search_circle_fill</i>
+                  <h2 style="margin:0; font-size:24px; font-weight:700; margin-bottom:6px; letter-spacing:-0.5px;">Resource Finder</h2>
+                  <p style="margin:0; opacity:0.85; font-size:15px;">Search local shelters, hotlines, and legal aid.</p>
+                </a>
+              </div>
             </div>
 
-            <!-- Exit button -->
-            <div class="block" style="margin-top:24px; margin-bottom:40px;">
-              <a href="calculator.html" class="button button-large button-fill exit-btn-f7">
-                <i class="f7-icons" style="font-size:20px; margin-right:8px;">power</i>
-                Exit Immediately
-              </a>
+            <div class="card" style="background: linear-gradient(135deg, #5b21b6, #8b5cf6); border-radius: 20px; box-shadow: 0 10px 20px rgba(139,92,246,0.3);">
+              <div class="card-content">
+                <a href="peer-support.html" class="item-link" style="display:block; padding:24px; color:#fff; text-decoration:none;">
+                  <i class="f7-icons" style="font-size:36px; margin-bottom:12px;">chat_bubble_2_fill</i>
+                  <h2 style="margin:0; font-size:24px; font-weight:700; margin-bottom:6px; letter-spacing:-0.5px;">Peer Support</h2>
+                  <p style="margin:0; opacity:0.85; font-size:15px;">Chat anonymously with a trained survivor volunteer.</p>
+                </a>
+              </div>
             </div>
 
+            <div class="card" style="background: linear-gradient(135deg, #0f766e, #14b8a6); border-radius: 20px; box-shadow: 0 10px 20px rgba(20,184,166,0.2);">
+              <div class="card-content">
+                <a href="professional-help.html" class="item-link" style="display:block; padding:24px; color:#fff; text-decoration:none;">
+                  <i class="f7-icons" style="font-size:36px; margin-bottom:12px;">stethoscope</i>
+                  <h2 style="margin:0; font-size:24px; font-weight:700; margin-bottom:6px; letter-spacing:-0.5px;">Professional Help</h2>
+                  <p style="margin:0; opacity:0.85; font-size:15px;">Connect with counselors and legal advisors.</p>
+                </a>
+              </div>
+            </div>
+            
+            <div class="card" style="background: rgba(255,255,255,0.06); border-radius: 20px; margin-top:32px;">
+              <div class="card-content">
+                <a href="safety.html" class="item-link" style="display:block; padding:20px; color:var(--safe-text); text-decoration:none;">
+                  <div style="display:flex; align-items:center; gap:16px;">
+                    <div style="width:40px; height:40px; border-radius:20px; background:rgba(16,185,129,0.15); display:flex; align-items:center; justify-content:center;">
+                      <i class="f7-icons" style="font-size:20px; color: #34d399;">shield_fill</i>
+                    </div>
+                    <div>
+                      <h3 style="margin:0; font-size:17px; font-weight:600; margin-bottom:2px;">Safety & Privacy</h3>
+                      <p style="margin:0; color:var(--safe-text-dim); font-size:13px;">Review stealth protections</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            
+            <div style="height:120px;"></div> <!-- Spacer for FAB bottom safe area -->
           </div>
         </div>
       </div>
@@ -115,7 +107,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/framework7@9.0.3/framework7-bundle.min.js"></script>
   <script>
-    var app = new Framework7({ el: '#app', name: 'SafeCalc', theme: 'ios', dark: true });
+    var app = new Framework7({ el: '#app', name: 'Calculator', theme: 'ios', dark: true });
   </script>
 </body>
 </html>

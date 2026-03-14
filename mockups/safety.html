@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
-  <title>SafeCalc — Safety</title>
+  <title>Calculator — Safety</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/framework7@9.0.3/framework7-bundle.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/framework7-icons@5.0.5/css/framework7-icons.css">
   <link rel="stylesheet" href="../css/styles.css">
@@ -12,6 +12,19 @@
 
   <div class="phone-frame">
     <div class="dynamic-island"></div>
+
+    <!-- Global Status Bar -->
+    <div class="global-status-bar">
+      <span>9:41</span>
+      <div class="icons">
+        <!-- Cellular -->
+        <svg viewBox="0 0 18 12" style="width:16px; margin-right:1px;"><g fill="currentColor"><rect x="1" y="7" width="2.5" height="5" rx="1"/><rect x="5.5" y="4.5" width="2.5" height="7.5" rx="1"/><rect x="10" y="2" width="2.5" height="10" rx="1"/><rect x="14.5" y="0" width="2.5" height="12" rx="1"/></g></svg>
+        <!-- Wi-Fi -->
+        <svg viewBox="0 0 24 20" style="width:17px; margin-right:4px;"><path fill="currentColor" d="M12 19c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7.66-8.24c-4.23-3.6-11.09-3.6-15.32 0-.38.33-.42.91-.1 1.29.33.38.91.42 1.29.1 3.49-2.96 9.17-2.96 12.66 0 .38.33.95.28 1.29-.1.33-.38.28-.95-.1-1.29zm-3.83 4.09c-2.11-1.8-5.55-1.8-7.66 0-.38.33-.42.9-.1 1.29.33.38.91.42 1.29.1 1.74-1.48 4.59-1.48 6.33 0 .38.33.95.28 1.29-.1.32-.39.28-.96-.1-1.29zm7.66-8.19c-6.34-5.4-16.63-5.4-22.98 0-.38.33-.42.91-.1 1.29.33.38.91.42 1.29.1 5.23-4.45 13.75-4.45 18.98 0 .38.33.95.28 1.29-.1.33-.38.28-.95-.1-1.29z"/></svg>
+        <!-- Battery -->
+        <svg viewBox="0 0 25 12" style="width:23px; padding-bottom:1px;"><rect x="1" y="1" width="20" height="10" rx="3.5" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="3" y="3" width="13" height="6" rx="1.5" fill="currentColor"/><path d="M22 4.5h1a1.5 1.5 0 010 3h-1v-3z" fill="currentColor"/></svg>
+      </div>
+    </div>
 
     <div id="app">
       <div class="view view-main">
@@ -120,31 +133,29 @@
                       <div class="item-title-row">
                         <div class="item-title" style="color:var(--safe-text); font-weight:600;">Stealth Mode</div>
                       </div>
-                      <div class="item-subtitle" style="color:var(--safe-text-dim);">App appears as "SafeCalc" in system menus and app switchers.</div>
+                      <div class="item-subtitle" style="color:var(--safe-text-dim);">App appears as "Calculator" in system menus and app switchers.</div>
                     </div>
                   </div>
                 </li>
               </ul>
             </div>
 
-            <!-- Exit button -->
-            <div class="block" style="margin-top:16px; margin-bottom:40px;">
-              <a href="calculator.html" class="button button-large button-fill exit-btn-f7">
-                <i class="f7-icons" style="font-size:20px; margin-right:8px;">power</i>
-                Exit Immediately
-              </a>
-            </div>
-
+            <div style="height:120px;"></div> <!-- Spacer for FAB -->
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Persistent Emergency Exit FAB -->
+    <a href="calculator.html" class="emergency-fab" style="bottom: 40px;">
+      <i class="f7-icons">power</i> Exit
+    </a>
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/framework7@9.0.3/framework7-bundle.min.js"></script>
   <script>
-    var app = new Framework7({ el: '#app', name: 'SafeCalc', theme: 'ios', dark: true });
+    var app = new Framework7({ el: '#app', name: 'Calculator', theme: 'ios', dark: true });
   </script>
 </body>
 </html>

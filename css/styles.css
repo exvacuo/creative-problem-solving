@@ -122,20 +122,60 @@
   height: 100%;
 }
 
-.phone-frame #app {
-  height: 852px;
-  position: relative;
-}
-
 /* Push navbar down to clear Dynamic Island */
 .phone-frame .navbar {
   margin-top: 0;
   padding-top: 54px !important;
 }
 
+/* Global Status Bar */
+.global-status-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 14px 38px 0; font-size: 15px; font-weight: 600; color: #fff;
+  letter-spacing: -0.3px; z-index: 10000; pointer-events: none;
+}
+/* If the app uses a light background, we need a dark status bar (not heavily used yet, but good for future-proofing) */
+.page-bg-light .global-status-bar { color: #000; }
+.page-bg-light .global-status-bar .icons svg { fill: #000; }
+
+.global-status-bar .icons { display: flex; align-items: center; gap: 6px; margin-top: 1px; }
+.global-status-bar .icons svg { height: 13px; fill: #fff; opacity: 0.95; }
+
+.phone-frame #app {
+  height: 852px;
+  position: relative;
+}
+
 .phone-frame .page {
   background: var(--calc-bg);
 }
+
+/* Global Emergency Exit FAB */
+.emergency-fab {
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+  background: #ff3b30;
+  color: #fff;
+  border-radius: 28px;
+  padding: 14px 24px;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 24px rgba(255,59,48,0.4);
+  z-index: 500;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+}
+.emergency-fab:active {
+  transform: scale(0.96);
+  background: #d63026;
+}
+.emergency-fab i { font-size: 18px; }
 
 .phone-frame .page.dark-support {
   background: var(--safe-bg);
@@ -502,52 +542,32 @@
 
 .hs-status-bar {
   display: flex; justify-content: space-between; align-items: flex-start;
-  padding: 17px 32px 6px; font-size: 15px; font-weight: 600; color: #fff;
-  letter-spacing: -0.3px;
+  padding: 14px 38px 0; font-size: 15px; font-weight: 600; color: #fff;
+  letter-spacing: -0.3px; z-index: 400;
 }
-.hs-status-bar .icons { display: flex; align-items: center; gap: 5px; }
-.hs-status-bar .icons svg { width: 17px; height: 17px; fill: #fff; }
-
-.hs-search {
-  display: flex; align-items: center; justify-content: center;
-  margin: 44px auto 14px; width: 330px; height: 32px;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border-radius: 16px; border: 0.5px solid rgba(255,255,255,0.08);
-}
-.hs-search svg { width: 14px; height: 14px; stroke: rgba(255,255,255,0.6); margin-right: 6px; stroke-width: 2.5; }
-.hs-search span { font-size: 15px; color: rgba(255,255,255,0.6); font-weight: 400; }
+.hs-status-bar .icons { display: flex; align-items: center; gap: 6px; margin-top: 1px; }
+.hs-status-bar .icons svg { height: 13px; fill: #fff; opacity: 0.95; }
 
 .hs-grid {
   flex: 1; display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* Exact iOS grid spacing: ~27px horizontal, ~32px vertical gap */
-  gap: 32px 27px; padding: 12px 20px; align-content: start;
+  /* Increased top padding to clear dynamic island properly */
+  gap: 28px 24px; padding: 28px 20px 12px; align-content: start;
 }
 
 .hs-app { display: flex; flex-direction: column; align-items: center; gap: 5px; text-decoration: none; cursor: default; }
 
 .hs-app-icon {
-  width: 60px; height: 60px;
-  /* Math standard for Apple squircle: 22.37% of width */
-  border-radius: 22.37%;
+  width: 64px; height: 64px;
   display: block;
-  /* Exact iOS icon inset shadow to simulate 3D light edge */
-  box-shadow: inset 0 0 1px rgba(0,0,0,0.2), 0 3px 6px rgba(0,0,0,0.15);
-  overflow: hidden;
   background: transparent;
-  object-fit: cover;
+  object-fit: contain;
 }
-.hs-app-icon.calc    {
-  background: linear-gradient(180deg, #2c2c2e, #1c1c1e);
-  border: 0.5px solid rgba(255,255,255,0.1);
-  display: flex; align-items: center; justify-content: center;
-}
-.hs-app-icon svg { width: 32px; height: 32px; }
+.hs-app-icon svg { width: 34px; height: 34px; }
 
 .hs-icon-wrapper {
   position: relative;
-  width: 60px; height: 60px;
+  width: 64px; height: 64px;
 }
 
 .hs-app-name {
@@ -559,15 +579,18 @@
 }
 
 .hs-badge {
-  position: absolute; top: -5px; right: -5px;
-  min-width: 22px; height: 22px; border-radius: 11px;
-  background: #ff3b30; color: #fff; font-size: 13px; font-weight: 600;
+  position: absolute; top: -6px; right: -8px;
+  min-width: 24px; height: 24px; border-radius: 12px;
+  background: #ff3b30; color: #fff; font-size: 14px; font-weight: 500;
   display: flex; align-items: center; justify-content: center;
-  padding: 0 6px; border: 2px solid transparent; z-index: 2;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  padding: 0 6px; box-sizing: border-box;
+  /* Thin semi-transparent border mimics the iOS cutout effect */
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4); z-index: 2;
+  letter-spacing: -0.5px;
 }
 /* Simulate the dock mask around the badge */
-.hs-app:last-child .hs-badge { border-color: #3e4e69; }
+.hs-dock .hs-badge { border-color: rgba(255,255,255,0.4); }
 
 .hs-dots { display: flex; justify-content: center; gap: 8px; padding: 2px 0 16px; }
 .hs-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.4); }
@@ -587,7 +610,7 @@
 }
 .hs-dock .hs-app { gap: 0; }
 .hs-dock .hs-app-name { display: none; /* Dock icons have no name */ }
-.hs-dock .hs-badge { top: -4px; right: -4px; }
+.hs-dock .hs-badge { top: -6px; right: -8px; }
 
 .home-indicator {
   width: 134px; height: 5px; border-radius: 2.5px;
