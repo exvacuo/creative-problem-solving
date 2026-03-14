@@ -36,12 +36,17 @@
             <div class="navbar-bg"></div>
             <div class="navbar-inner sliding">
               <div class="left">
-                <a href="support.html" class="link" style="color:var(--safe-primary);">
+                <a href="support.html" class="link external" style="color:var(--safe-primary);">
                   <i class="f7-icons">chevron_left</i>
                   <span>Back</span>
                 </a>
               </div>
               <div class="title" style="color:var(--safe-text);">Resources</div>
+              <div class="right">
+                <a href="#" class="link" onclick="window.location.href='https://www.google.com'">
+                  <i class="f7-icons" style="color: #ff3b30; font-weight: bold; font-size: 24px;">xmark</i>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -64,52 +69,7 @@
             </div>
 
             <div class="list media-list inset search-list searchbar-found" style="margin-top:0;">
-              <ul>
-                <li class="swipeout">
-                  <div class="swipeout-content">
-                    <a href="#" class="item-link item-content">
-                      <div class="item-media">
-                        <div style="width:40px; height:40px; border-radius:8px; background:rgba(59,130,246,0.2); display:flex; align-items:center; justify-content:center;">
-                          <i class="f7-icons" style="font-size:20px; color:#3b82f6;">house_fill</i>
-                        </div>
-                      </div>
-                      <div class="item-inner">
-                        <div class="item-title-row">
-                          <div class="item-title" style="color:var(--safe-text); font-weight:600;">Safe Haven Women's Shelter</div>
-                          <div class="item-after" style="color:var(--safe-text-dim); font-size:12px;">1.2 mi</div>
-                        </div>
-                        <div class="item-subtitle" style="color:var(--safe-primary); font-size:14px;">24/7 Intake Available</div>
-                        <div class="item-text" style="color:var(--safe-text-dim); height:auto;">Secure, undisclosed location providing emergency housing and childcare.</div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="swipeout-actions-right">
-                    <a href="#" class="color-green"><i class="f7-icons">phone_fill</i></a>
-                    <a href="#" class="color-blue"><i class="f7-icons">map_fill</i></a>
-                  </div>
-                </li>
-                <li class="swipeout">
-                  <div class="swipeout-content">
-                    <a href="#" class="item-link item-content">
-                      <div class="item-media">
-                        <div style="width:40px; height:40px; border-radius:8px; background:rgba(139,92,246,0.2); display:flex; align-items:center; justify-content:center;">
-                          <i class="f7-icons" style="font-size:20px; color:#8b5cf6;">building_2_fill</i>
-                        </div>
-                      </div>
-                      <div class="item-inner">
-                        <div class="item-title-row">
-                          <div class="item-title" style="color:var(--safe-text); font-weight:600;">City Legal Aid Services</div>
-                          <div class="item-after" style="color:var(--safe-text-dim); font-size:12px;">3.5 mi</div>
-                        </div>
-                        <div class="item-subtitle" style="color:var(--safe-primary); font-size:14px;">Free Consultations</div>
-                        <div class="item-text" style="color:var(--safe-text-dim); height:auto;">Pro-bono legal support for restraining orders and child custody.</div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="swipeout-actions-right">
-                    <a href="#" class="color-green"><i class="f7-icons">phone_fill</i></a>
-                  </div>
-                </li>
+              <ul id="resource-list">
               </ul>
             </div>
             
@@ -129,6 +89,77 @@
   <script src="https://cdn.jsdelivr.net/npm/framework7@9.0.3/framework7-bundle.min.js"></script>
   <script>
     var app = new Framework7({ el: '#app', name: 'Calculator', theme: 'ios', dark: true });
+
+    // Emergency Exit Logic
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') window.location.href = 'https://www.google.com';
+    });
+    const emergencyFabs = document.querySelectorAll('.emergency-fab');
+    emergencyFabs.forEach(fab => {
+      fab.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'https://www.google.com';
+      });
+    });
+
+    const resources = [
+        { name: 'Haven Shelter Network', location: 'London, UK', desc: 'Emergency accommodation and 24/7 crisis support for women and children fleeing abuse.', details: 'Haven provides safe housing for up to 90 days, including meals, counselling referrals, and legal support coordination. Capacity: 42 beds. Languages: English, Arabic, Spanish.\n\nHotline: 0800 123 4567 (24/7, free)' },
+        { name: 'Community Legal Aid Centre', location: 'Manchester, UK', desc: 'Free legal advice on protective orders, divorce, custody, and housing rights for abuse survivors.', details: 'Staffed by volunteer solicitors and barristers. Same-day appointments available for emergency situations. No means testing required for DV cases.\n\nBook: legal@clac.example.org' },
+        { name: 'National Domestic Abuse Helpline', location: 'Nationwide (UK)', desc: 'Confidential telephone and online chat support, 7 days a week, 365 days a year.', details: 'All calls are free and will not appear on your itemised phone bill. Trained advisors available 24 hours. Also offers BSL video relay.\n\nPhone: 0808 2000 247' },
+    ];
+
+    const icons = ['house_fill', 'building_2_fill', 'phone_fill'];
+    const colors = ['#3b82f6', '#8b5cf6', '#10b981'];
+    const bgColors = ['rgba(59,130,246,0.2)', 'rgba(139,92,246,0.2)', 'rgba(16,185,129,0.2)'];
+
+    const ul = document.getElementById('resource-list');
+    if (ul) {
+      resources.forEach((r, i) => {
+        const icon = icons[i % icons.length];
+        const color = colors[i % colors.length];
+        const bgColor = bgColors[i % bgColors.length];
+        
+        ul.innerHTML += `
+          <li>
+            <a href="#" class="item-link item-content" onclick="openResourceModal(${i})">
+              <div class="item-media">
+                <div style="width:40px; height:40px; border-radius:8px; background:${bgColor}; display:flex; align-items:center; justify-content:center;">
+                  <i class="f7-icons" style="font-size:20px; color:${color};">${icon}</i>
+                </div>
+              </div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title" style="color:var(--safe-text); font-weight:600;">${r.name}</div>
+                  <div class="item-after" style="color:var(--safe-accent); font-size:14px;">${r.location}</div>
+                </div>
+                <div class="item-text" style="color:var(--safe-text-dim); height:auto;">${r.desc}</div>
+              </div>
+            </a>
+          </li>`;
+      });
+    }
+
+    function openResourceModal(i) {
+      const r = resources[i];
+      const popupHTML = `
+        <div class="popup" style="background:var(--safe-surface);">
+          <div class="page dark-support">
+            <div class="navbar">
+              <div class="navbar-bg"></div>
+              <div class="navbar-inner">
+                <div class="title" style="color:var(--safe-text);">${r.name}</div>
+                <div class="right"><a href="#" class="link popup-close" style="color:var(--safe-primary);">Close</a></div>
+              </div>
+            </div>
+            <div class="page-content" style="padding: 24px; color:var(--safe-text);">
+              <h3 style="margin-top:0; color:var(--safe-primary);">${r.location}</h3>
+              <p style="white-space: pre-line; line-height: 1.6; color:var(--safe-text-dim);">${r.details}</p>
+            </div>
+          </div>
+        </div>`;
+      app.popup.create({ content: popupHTML, swipeToClose: true }).open();
+    }
+
     // Initialize F7 Searchbar
     var searchbar = app.searchbar.create({
       el: '.searchbar',

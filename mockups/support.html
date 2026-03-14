@@ -40,6 +40,11 @@
             <div class="navbar-bg"></div>
             <div class="navbar-inner">
               <div class="title" style="color:var(--safe-text);">Support Tools</div>
+              <div class="right">
+                <a href="#" class="link" onclick="window.location.href='https://www.google.com'">
+                  <i class="f7-icons" style="color: #ff3b30; font-weight: bold; font-size: 24px;">xmark</i>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -53,7 +58,7 @@
             <!-- Dashboard Cards -->
             <div class="card" style="background: linear-gradient(135deg, #1e3a8a, #3b82f6); border-radius: 20px; box-shadow: 0 10px 20px rgba(59,130,246,0.3);">
               <div class="card-content">
-                <a href="resource-finder.html" class="item-link" style="display:block; padding:24px; color:#fff; text-decoration:none;">
+                <a href="resource-finder.html" class="item-link external" style="display:block; padding:24px; color:#fff; text-decoration:none;">
                   <i class="f7-icons" style="font-size:36px; margin-bottom:12px;">search_circle_fill</i>
                   <h2 style="margin:0; font-size:24px; font-weight:700; margin-bottom:6px; letter-spacing:-0.5px;">Resource Finder</h2>
                   <p style="margin:0; opacity:0.85; font-size:15px;">Search local shelters, hotlines, and legal aid.</p>
@@ -63,7 +68,7 @@
 
             <div class="card" style="background: linear-gradient(135deg, #5b21b6, #8b5cf6); border-radius: 20px; box-shadow: 0 10px 20px rgba(139,92,246,0.3);">
               <div class="card-content">
-                <a href="peer-support.html" class="item-link" style="display:block; padding:24px; color:#fff; text-decoration:none;">
+                <a href="peer-support.html" class="item-link external" style="display:block; padding:24px; color:#fff; text-decoration:none;">
                   <i class="f7-icons" style="font-size:36px; margin-bottom:12px;">chat_bubble_2_fill</i>
                   <h2 style="margin:0; font-size:24px; font-weight:700; margin-bottom:6px; letter-spacing:-0.5px;">Peer Support</h2>
                   <p style="margin:0; opacity:0.85; font-size:15px;">Chat anonymously with a trained survivor volunteer.</p>
@@ -73,7 +78,7 @@
 
             <div class="card" style="background: linear-gradient(135deg, #0f766e, #14b8a6); border-radius: 20px; box-shadow: 0 10px 20px rgba(20,184,166,0.2);">
               <div class="card-content">
-                <a href="professional-help.html" class="item-link" style="display:block; padding:24px; color:#fff; text-decoration:none;">
+                <a href="professional-help.html" class="item-link external" style="display:block; padding:24px; color:#fff; text-decoration:none;">
                   <i class="f7-icons" style="font-size:36px; margin-bottom:12px;">stethoscope</i>
                   <h2 style="margin:0; font-size:24px; font-weight:700; margin-bottom:6px; letter-spacing:-0.5px;">Professional Help</h2>
                   <p style="margin:0; opacity:0.85; font-size:15px;">Connect with counselors and legal advisors.</p>
@@ -83,7 +88,7 @@
             
             <div class="card" style="background: rgba(255,255,255,0.06); border-radius: 20px; margin-top:32px;">
               <div class="card-content">
-                <a href="safety.html" class="item-link" style="display:block; padding:20px; color:var(--safe-text); text-decoration:none;">
+                <a href="safety.html" class="item-link external" style="display:block; padding:20px; color:var(--safe-text); text-decoration:none;">
                   <div style="display:flex; align-items:center; gap:16px;">
                     <div style="width:40px; height:40px; border-radius:20px; background:rgba(16,185,129,0.15); display:flex; align-items:center; justify-content:center;">
                       <i class="f7-icons" style="font-size:20px; color: #34d399;">shield_fill</i>
@@ -108,6 +113,18 @@
   <script src="https://cdn.jsdelivr.net/npm/framework7@9.0.3/framework7-bundle.min.js"></script>
   <script>
     var app = new Framework7({ el: '#app', name: 'Calculator', theme: 'ios', dark: true });
+
+    // Emergency Exit Logic
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') window.location.href = 'https://www.google.com';
+    });
+    const emergencyFabs = document.querySelectorAll('.emergency-fab');
+    emergencyFabs.forEach(fab => {
+      fab.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'https://www.google.com';
+      });
+    });
   </script>
 </body>
 </html>

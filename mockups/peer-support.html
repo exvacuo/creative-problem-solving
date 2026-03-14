@@ -37,11 +37,16 @@
             <div class="navbar-bg"></div>
             <div class="navbar-inner sliding">
               <div class="left">
-                <a href="support.html" class="link" style="color:var(--safe-primary);">
+                <a href="support.html" class="link external" style="color:var(--safe-primary);">
                   <i class="f7-icons">chevron_left</i><span>Back</span>
                 </a>
               </div>
               <div class="title" style="color:var(--safe-text);">Volunteer Chat</div>
+              <div class="right">
+                <a href="#" class="link" onclick="window.location.href='https://www.google.com'">
+                  <i class="f7-icons" style="color: #ff3b30; font-weight: bold; font-size: 24px;">xmark</i>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -51,7 +56,7 @@
               <div class="messagebar-area">
                 <textarea class="resizable" placeholder="Message..." style="color:#fff;"></textarea>
               </div>
-              <a href="#" class="link send-link" style="color:var(--safe-primary);">Send</a>
+              <a href="#" class="link send-link" style="color:var(--safe-accent); font-weight: 600;">Send</a>
             </div>
           </div>
 
@@ -85,6 +90,18 @@
     var app = new Framework7({ el: '#app', name: 'Calculator', theme: 'ios', dark: true });
     var $$ = Framework7.$;
     
+    // Emergency Exit Logic
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') window.location.href = 'https://www.google.com';
+    });
+    const emergencyFabs = document.querySelectorAll('.emergency-fab');
+    emergencyFabs.forEach(fab => {
+      fab.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'https://www.google.com';
+      });
+    });
+
     // Init Messages
     var messages = app.messages.create({
       el: '.messages',
@@ -110,6 +127,14 @@
       el: '.messagebar'
     });
 
+    const replies = [
+        "Thank you for reaching out. What you're feeling is valid. Would you like to share more about what's happening?",
+        "I hear you, and I want you to know you're not alone. Take your time — I'm here.",
+        "That sounds incredibly difficult. You've shown real courage by speaking up. How can I support you right now?",
+        "Your safety is the most important thing. Would it be helpful if I shared some local resources with you?",
+    ];
+    let replyIndex = 0;
+
     // Handle Send Event
     $$('.send-link').on('click', function () {
       var text = messagebar.getValue().replace(/\n/g, '<br>').trim();
@@ -132,14 +157,16 @@
         });
 
         setTimeout(function () {
+          const replyText = replies[replyIndex % replies.length];
+          replyIndex++;
           messages.addMessage({
-            text: 'I understand. Take your time, I am listening.',
+            text: replyText,
             type: 'received',
             name: 'Volunteer',
             avatar: '<div class="message-avatar" style="background-color: var(--safe-primary); display:flex; align-items:center; justify-content:center; color:#fff;"><i class="f7-icons" style="font-size:16px;">heart_fill</i></div>'
           });
           messages.hideTyping();
-        }, 2000);
+        }, 1200);
       }, 500);
     });
   </script>
