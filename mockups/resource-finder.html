@@ -88,9 +88,9 @@
     var app = new Framework7({ el: '#app', name: 'Calculator', theme: 'ios', dark: true });
 
     const resources = [
-        { name: 'Haven Shelter Network', location: 'London, UK', desc: 'Emergency accommodation and 24/7 crisis support for women and children fleeing abuse.', details: 'Haven provides safe housing for up to 90 days, including meals, counselling referrals, and legal support coordination. Capacity: 42 beds. Languages: English, Arabic, Spanish.\n\nHotline: 0800 123 4567 (24/7, free)' },
-        { name: 'Community Legal Aid Centre', location: 'Manchester, UK', desc: 'Free legal advice on protective orders, divorce, custody, and housing rights for abuse survivors.', details: 'Staffed by volunteer solicitors and barristers. Same-day appointments available for emergency situations. No means testing required for DV cases.\n\nBook: legal@clac.example.org' },
-        { name: 'National Domestic Abuse Helpline', location: 'Nationwide (UK)', desc: 'Confidential telephone and online chat support, 7 days a week, 365 days a year.', details: 'All calls are free and will not appear on your itemised phone bill. Trained advisors available 24 hours. Also offers BSL video relay.\n\nPhone: 0808 2000 247' },
+        { name: "Wender Women's Shelter", location: "Groningen, NL", desc: "Emergency accommodation and outpatient support for individuals and families dealing with domestic violence.", details: "Wender provides safe shelter, housing assistance, and outpatient support. Services include crisis relief and counselling referrals.\n\nHotline: 088 066 3000 (24/7)" },
+        { name: "Slachtofferhulp Nederland", location: "Groningen, NL", desc: "Emotional and legal support to victims of domestic violence and other crimes.", details: "Provides help with emotional processing, navigating criminal proceedings, and claiming damages. Confidential advice.\n\nPhone: 0900-0101" },
+        { name: "Veilig Thuis Groningen", location: "Regional (Groningen)", desc: "Regional advice and reporting center for domestic violence and child abuse.", details: "All calls are free, confidential, and will not appear on your itemised phone bill. Trained advisors available 24 hours to guide you to appropriate local services.\n\nPhone: 0800 2000 (24/7, free)" },
     ];
 
     const icons = ['house_fill', 'building_2_fill', 'phone_fill'];
@@ -158,5 +158,12 @@
     });
   </script>
   <script src="../js/app.js"></script>
+
+    <!-- ===== SWITCH TO WEB PROMO ===== -->
+    <a href="../index.html" class="external" style="position: fixed; bottom: 24px; right: 24px; z-index: 100000; background: #1c1c1e; color: #fff; padding: 12px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; display: flex; align-items: center; gap: 8px; font-family: -apple-system, sans-serif; text-decoration: none;">
+      <svg xmlns="http://www.w3.org/2000/svg" style="width:20px; height:20px; color: #ff9f0a;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+      <span style="font-size:14px; font-weight:600;">View Web Promo</span>
+    </a>
+
 </body>
 </html>
