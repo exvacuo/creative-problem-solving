@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="background:#111113;">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
@@ -31,29 +31,20 @@
         <div data-name="trigger" class="page no-navbar">
           <div class="page-content" style="background:var(--calc-bg); padding:0; display:flex; flex-direction:column; min-height:852px;">
 
-            <div class="trigger-overlay">
-              <!-- Lock icon -->
-              <div class="lock-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
+            <div class="trigger-overlay" id="trigger-ui" style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; transition: opacity 0.5s; padding-bottom: 10vh;">
+              
+              <!-- State 1: Loading -->
+              <div id="auth-loading" style="display:flex; flex-direction:column; align-items:center;">
+                <!-- Framework7 Native iOS Spinner -->
+                <div class="preloader color-gray" style="width: 32px; height: 32px; margin-bottom: 24px;"></div>
+                <div style="font-size: 15px; font-weight: 500; color: #8e8e93; letter-spacing: 0.5px;">Authenticating</div>
               </div>
 
-              <div class="trigger-code">π π π =</div>
-
-              <div class="trigger-message">
-                <h2>Advanced Mode Activated</h2>
-                <p>Verifying secure connection…</p>
+              <!-- State 2: Success -->
+              <div id="auth-success" style="display:none; flex-direction:column; align-items:center;">
+                <i class="f7-icons" style="font-size: 44px; color: var(--safe-success); margin-bottom: 16px; transform: scale(0.5); opacity: 0; animation: bounce-in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;">lock_open_fill</i>
               </div>
 
-              <div class="loading-dots">
-                <span></span><span></span><span></span>
-              </div>
-
-              <div class="trigger-progress">
-                <div class="trigger-progress-bar"></div>
-              </div>
             </div>
 
           </div>
@@ -67,10 +58,20 @@
   <script>
     var app = new Framework7({ el: '#app', name: 'Calculator', theme: 'ios' });
     
-    // Redirect to the support interface after the fake loading animation
+    // Trigger a sleek 2-step Apple-like loading sequence
+    setTimeout(function() {
+      document.getElementById('trigger-ui').style.opacity = '1';
+    }, 100);
+
+    setTimeout(function() {
+      // Switch from spinning to unlocked
+      document.getElementById('auth-loading').style.display = 'none';
+      document.getElementById('auth-success').style.display = 'flex';
+    }, 1600);
+    
     setTimeout(function() {
       window.location.href = 'support.html';
-    }, 2800);
+    }, 2400);
   </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="background:#111113;">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
@@ -23,10 +23,7 @@
       </div>
     </div>
 
-    <!-- Persistent Emergency Exit FAB -->
-    <a href="calculator.html" class="emergency-fab" style="bottom: 40px;">
-      <i class="f7-icons">power</i> Exit
-    </a>
+
 
     <div id="app">
       <div class="view view-main">
@@ -43,7 +40,7 @@
               </div>
               <div class="title" style="color:var(--safe-text);">Resources</div>
               <div class="right">
-                <a href="#" class="link" onclick="window.location.href='https://www.google.com'">
+                <a href="homescreen.html" class="link external">
                   <i class="f7-icons" style="color: #ff3b30; font-weight: bold; font-size: 24px;">xmark</i>
                 </a>
               </div>
@@ -65,7 +62,7 @@
           <div class="page-content" style="background:var(--safe-bg);">
             
             <div class="searchbar-hide-on-search">
-              <div class="block-title" style="margin-top:16px;">Nearby Services</div>
+              <div class="block-title" style="margin-top:16px; color:var(--safe-text);">Nearby Services</div>
             </div>
 
             <div class="list media-list inset search-list searchbar-found" style="margin-top:0;">
@@ -89,18 +86,6 @@
   <script src="https://cdn.jsdelivr.net/npm/framework7@9.0.3/framework7-bundle.min.js"></script>
   <script>
     var app = new Framework7({ el: '#app', name: 'Calculator', theme: 'ios', dark: true });
-
-    // Emergency Exit Logic
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') window.location.href = 'https://www.google.com';
-    });
-    const emergencyFabs = document.querySelectorAll('.emergency-fab');
-    emergencyFabs.forEach(fab => {
-      fab.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.href = 'https://www.google.com';
-      });
-    });
 
     const resources = [
         { name: 'Haven Shelter Network', location: 'London, UK', desc: 'Emergency accommodation and 24/7 crisis support for women and children fleeing abuse.', details: 'Haven provides safe housing for up to 90 days, including meals, counselling referrals, and legal support coordination. Capacity: 42 beds. Languages: English, Arabic, Spanish.\n\nHotline: 0800 123 4567 (24/7, free)' },
@@ -147,11 +132,16 @@
             <div class="navbar">
               <div class="navbar-bg"></div>
               <div class="navbar-inner">
+                <div class="left"><a href="#" class="link popup-close" style="color:var(--safe-primary);">Close</a></div>
                 <div class="title" style="color:var(--safe-text);">${r.name}</div>
-                <div class="right"><a href="#" class="link popup-close" style="color:var(--safe-primary);">Close</a></div>
+                <div class="right">
+                  <a href="homescreen.html" class="link external">
+                    <i class="f7-icons" style="color: #ff3b30; font-weight: bold; font-size: 24px;">xmark</i>
+                  </a>
+                </div>
               </div>
             </div>
-            <div class="page-content" style="padding: 24px; color:var(--safe-text);">
+            <div class="page-content" style="padding: 24px; padding-top: calc(44px + var(--f7-safe-area-top) + 24px); color:var(--safe-text);">
               <h3 style="margin-top:0; color:var(--safe-primary);">${r.location}</h3>
               <p style="white-space: pre-line; line-height: 1.6; color:var(--safe-text-dim);">${r.details}</p>
             </div>
@@ -167,5 +157,6 @@
       searchIn: '.item-title, .item-text',
     });
   </script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

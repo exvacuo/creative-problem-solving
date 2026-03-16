@@ -41,12 +41,11 @@
 /* ── iPhone 15 Pro Frame ──────────────────────────────────── */
 .phone-frame {
   width: 393px;
-  min-height: 852px;
-  margin: 40px auto;
+  height: 852px; /* Fixed logical height for F7 */
+  position: relative;
   border-radius: 55px;
   border: 3px solid #2a2a2c;
   overflow: hidden;
-  position: relative;
   background: #000;
   box-shadow:
     0 0 0 1px #4a4a4c,
@@ -54,6 +53,10 @@
     0 0 0 5px #3a3a3c,
     0 40px 100px rgba(0,0,0,0.6),
     0 0 80px rgba(0,0,0,0.3);
+  
+  /* CSS math to dynamically scale the phone so it always fits with a small margin */
+  transform-origin: center center;
+  transform: scale(min(calc((100vh - 40px) / 860), calc((100vw - 40px) / 400)));
 }
 
 
@@ -68,7 +71,7 @@
   height: 37px;
   background: #000;
   border-radius: 22px;
-  z-index: 300;
+  z-index: 12000;
   box-shadow: 0 0 0 0.5px rgba(255,255,255,0.08);
 }
 
@@ -98,7 +101,8 @@
 }
 
 /* Push navbar down to clear Dynamic Island */
-.phone-frame {
+.phone-frame,
+.phone-frame .popup {
   --f7-safe-area-top: 54px !important;
   --f7-safe-area-bottom: 34px !important;
 }
@@ -115,7 +119,7 @@
   top: 0; left: 0; right: 0;
   display: flex; justify-content: space-between; align-items: flex-start;
   padding: 14px 38px 0; font-size: 15px; font-weight: 600; color: #fff;
-  letter-spacing: -0.3px; z-index: 10000; pointer-events: none;
+  letter-spacing: -0.3px; z-index: 12000; pointer-events: none;
 }
 /* If the app uses a light background, we need a dark status bar (not heavily used yet, but good for future-proofing) */
 .page-bg-light .global-status-bar { color: #000; }
@@ -252,11 +256,24 @@
 
 /* Peer Support Messages Overrides */
 .phone-frame .messages {
-  --f7-message-sent-bg-color: var(--safe-primary);
-  --f7-message-sent-text-color: #fff;
-  --f7-message-received-bg-color: var(--safe-card);
-  --f7-message-received-text-color: #fff;
   background-color: transparent !important;
+}
+.phone-frame .message-sent .message-bubble {
+  background-color: var(--safe-primary) !important;
+  color: #fff !important;
+}
+.phone-frame .message-received .message-bubble {
+  background-color: #2c2c2e !important;
+  color: #fff !important;
+}
+.phone-frame .message-text, .phone-frame .message-bubble {
+  color: #fff !important;
+}
+.phone-frame .message-avatar {
+  background-color: var(--safe-primary) !important;
+  background-size: 16px 16px !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }
 .phone-frame .messagebar {
   --f7-messagebar-bg-color: var(--safe-surface);
@@ -432,6 +449,12 @@
   justify-content: center;
   padding: 40px 30px;
   text-align: center;
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 .trigger-code {
@@ -736,7 +759,102 @@
 .index-footer strong { color: var(--safe-text); }
 
 /* ── Page background ──────────────────────────────────────── */
-.page-bg-dark {
-  background: #111113; min-height: 100vh;
-  display: flex; align-items: center; justify-content: center;
+body.page-bg-dark {
+  background: #111113; 
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  overflow: hidden !important; /* Prevent ANY scrolling outside the phone */
+}
+
+/* ── Popup Containment ──────────────────────────────────────── */
+/* Force popups and backdrops to stay within the phone frame boundaries */
+.phone-frame .popup,
+.phone-frame .popup-backdrop {
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+}
+
+/* Ensure full-screen popups on desktop-sized windows correctly fit the frame */
+@media (min-width: 630px) {
+    .phone-frame .popup {
+        height: 100% !important;
+        top: 0 !important;
+        margin-top: 0 !important;
+        border-radius: 0 !important;
+    }
+}
+
+/* Provide a safe area for the status bar if the popup covers it */
+.phone-frame .popup .view,
+.phone-frame .popup .page {
+    padding-top: var(--f7-safe-area-top) !important; /* Force F7 page down */
+    box-sizing: border-box !important;
+}
+
+.phone-frame .popup .navbar {
+    height: calc(44px + var(--f7-safe-area-top)) !important;
+}
+
+.phone-frame .popup .navbar-inner {
+    padding-top: var(--f7-safe-area-top) !important;
+}
+
+/* Force text wrapping inside popup content */
+.phone-frame .popup .page-content, 
+.phone-frame .popup .page-content p, 
+.phone-frame .popup .page-content h1, 
+.phone-frame .popup .page-content h2, 
+.phone-frame .popup .page-content h3,
+.phone-frame .popup .page-content div {
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  word-break: normal !important;
+}
+
+/* Ensure the popup navbar container is correctly positioned */
+.phone-frame .popup .navbar-inner {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  padding: 0 16px !important;
+  padding-top: var(--f7-safe-area-top) !important;
+  min-height: 44px !important;
+  height: 100% !important;
+}
+
+/* Center the title and prevent it from overlapping buttons or clipping */
+.phone-frame .popup .navbar-inner .title {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  margin: 0 !important; /* Removed explicit margins */
+  text-align: center !important;
+  width: auto !important;
+  transform: none !important; /* Remove the transform causing left-clipping */
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  line-height: 1.2 !important;
+  pointer-events: none !important; /* Let clicks pass through to buttons below */
+}
+
+/* Ensure the 'right' and 'left' containers stay clickable above the title */
+.phone-frame .popup .navbar-inner .right,
+.phone-frame .popup .navbar-inner .left {
+  position: relative !important;
+  z-index: 2 !important;
+  pointer-events: auto !important; /* Re-enable clicks */
+}
+
+.phone-frame .popup .navbar-inner .right {
+  margin-left: auto !important;
 }
