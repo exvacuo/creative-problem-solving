@@ -116,16 +116,17 @@
 /* Global Status Bar */
 .global-status-bar {
   position: absolute;
-  top: 0; left: 0; right: 0;
-  display: flex; justify-content: space-between; align-items: flex-start;
-  padding: 14px 38px 0; font-size: 15px; font-weight: 600; color: #fff;
+  top: 12px; left: 0; right: 0;
+  height: 37px;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 38px; font-size: 15px; font-weight: 600; color: #fff;
   letter-spacing: -0.3px; z-index: 12000; pointer-events: none;
 }
 /* If the app uses a light background, we need a dark status bar (not heavily used yet, but good for future-proofing) */
 .page-bg-light .global-status-bar { color: #000; }
 .page-bg-light .global-status-bar .icons svg { fill: #000; }
 
-.global-status-bar .icons { display: flex; align-items: center; gap: 6px; margin-top: 1px; }
+.global-status-bar .icons { display: flex; align-items: center; gap: 6px; }
 .global-status-bar .icons svg { height: 13px; fill: #fff; opacity: 0.95; }
 
 .phone-frame #app {
